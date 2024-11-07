@@ -1,0 +1,23 @@
+public class FormData {
+    private String username;
+    private String password;
+    private String comments;
+    private int selectedNumber;
+    private int range;
+    private String selectedOption;
+
+    public FormData(String username, String password, String comments, int selectedNumber, int range, String selectedOption) {
+        this.username = username;
+        this.password = password;
+        this.comments = comments;
+        this.selectedNumber = selectedNumber;
+        this.range = range;
+        this.selectedOption = selectedOption;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Username: %s\nPassword: %s\nComments: %s\nSelected Number: %d\nRange: %d\nSelected Option: %s",
+                username, password, comments, selectedNumber, range, selectedOption);
+    }
+}
