@@ -1,0 +1,29 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class FormApplication extends JFrame {
+    public FormApplication() {
+        // Set up the main frame properties
+        setTitle("Basic Form Application");
+        setSize(500, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Root pane setup
+        JRootPane rootPane = this.getRootPane();
+        JLayeredPane layeredPane = rootPane.getLayeredPane();
+        JPanel contentPane = new JPanel(new BorderLayout());
+        rootPane.setContentPane(contentPane);
+
+        // Add form panel, toolbar, and buttons
+        FormPanel formPanel = new FormPanel();
+        ToolbarPanel toolbarPanel = new ToolbarPanel();
+        ButtonPanel buttonPanel = new ButtonPanel(formPanel);
+
+        contentPane.add(toolbarPanel, BorderLayout.NORTH);
+        contentPane.add(formPanel, BorderLayout.CENTER);
+        contentPane.add(buttonPanel, BorderLayout.SOUTH);
+
+        // Set visibility
+        setVisible(true);
+    }
+}
