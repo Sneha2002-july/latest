@@ -1,0 +1,9 @@
+import javax.swing.*;
+
+public class ToolbarPanel extends JToolBar {
+    public ToolbarPanel() {
+        add(new JButton("New"));
+        add(new JButton("Save"));
+        add(new JButton("Exit"));
+    }
+}
