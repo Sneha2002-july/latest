@@ -1,0 +1,27 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ButtonPanel extends JPanel {
+    private JButton submitButton;
+    private JButton cancelButton;
+
+    public ButtonPanel(FormPanel formPanel) {
+        setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        submitButton = new JButton("Submit");
+        cancelButton = new JButton("Cancel");
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FormData data = formPanel.getFormData();
+                JOptionPane.showMessageDialog(ButtonPanel.this, data, "Submitted Data", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        add(submitButton);
+        add(cancelButton);
+    }
+}
