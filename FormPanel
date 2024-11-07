@@ -1,0 +1,79 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class FormPanel extends JPanel {
+    JTextField usernameField;
+    JPasswordField passwordField;
+    JTextArea commentsArea;
+    JSpinner numberSpinner;
+    JSlider rangeSlider;
+    JList<String> optionsList;
+
+    public FormPanel() {
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(5, 5, 5, 5);
+
+        // Username field
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(new JLabel("Username:"), gbc);
+        usernameField = new JTextField(20);
+        gbc.gridx = 1;
+        add(usernameField, gbc);
+
+        // Password field
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Password:"), gbc);
+        passwordField = new JPasswordField(20);
+        gbc.gridx = 1;
+        add(passwordField, gbc);
+
+        // Comments area
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Comments:"), gbc);
+        commentsArea = new JTextArea(4, 20);
+        commentsArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        gbc.gridx = 1;
+        add(new JScrollPane(commentsArea), gbc);
+
+        // Number spinner
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Select a number:"), gbc);
+        numberSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 10, 1));
+        gbc.gridx = 1;
+        add(numberSpinner, gbc);
+
+        // Range slider
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Range:"), gbc);
+        rangeSlider = new JSlider(0, 100, 50);
+        gbc.gridx = 1;
+        add(rangeSlider, gbc);
+
+        // Options list
+        gbc.gridx = 0;
+        gbc.gridy++;
+        add(new JLabel("Options:"), gbc);
+        String[] options = {"Option 1", "Option 2", "Option 3"};
+        optionsList = new JList<>(options);
+        gbc.gridx = 1;
+        add(new JScrollPane(optionsList), gbc);
+    }
+
+    public FormData getFormData() {
+        return new FormData(
+            usernameField.getText(),
+            new String(passwordField.getPassword()),
+            commentsArea.getText(),
+            (Integer) numberSpinner.getValue(),
+            rangeSlider.getValue(),
+            optionsList.getSelectedValue()
+        );
+    }
+}
